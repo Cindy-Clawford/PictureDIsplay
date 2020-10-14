@@ -1,5 +1,6 @@
 # PictureDisplayService
 
+
 Hello! Welcome to the page for more information on the gallery display module for the Trip AdCoba site.
 
 This module covers the following components:
