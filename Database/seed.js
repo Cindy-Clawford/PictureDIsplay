@@ -53,12 +53,18 @@ const seed = () => {
     for (let x = 1; x <= length; x++) {
       let imageNum = arrayOfRandom.pop();
       let image = {};
-      image.imgMainUrl = `https://tripadcoba.s3-us-west-1.amazonaws.com/main${imageNum}.jpg`;
-      image.imgFullUrl = `https://tripadcoba.s3-us-west-1.amazonaws.com/full${imageNum}.jpg`;
-      image.imgThumbUrl = `https://tripadcoba.s3-us-west-1.amazonaws.com/thumb${imageNum}.jpg`;
-      mainImgSizeArray.push(`https://tripadcoba.s3-us-west-1.amazonaws.com/main${imageNum}.jpg`);
-      fullSizeArray.push(`https://tripadcoba.s3-us-west-1.amazonaws.com/full${imageNum}.jpg`);
-      thumbnailArray.push(`https://tripadcoba.s3-us-west-1.amazonaws.com/thumb${imageNum}.jpg`);
+      // image.imgMainUrl = `https://tripadcoba.s3-us-west-1.amazonaws.com/main${imageNum}.jpg`;
+      image.imgMainUrl = faker.image.imageUrl(600,400)
+      // image.imgFullUrl = `https://tripadcoba.s3-us-west-1.amazonaws.com/full${imageNum}.jpg`;
+      image.imgFullUrl = faker.image.imageUrl(1200,800)
+      // image.imgThumbUrl = `https://tripadcoba.s3-us-west-1.amazonaws.com/thumb${imageNum}.jpg`;
+      image.imgThumbUrl = faker.image.imageUrl(60, 50)
+      // mainImgSizeArray.push(`https://tripadcoba.s3-us-west-1.amazonaws.com/main${imageNum}.jpg`);
+      mainImgSizeArray.push(image.imgMainUrl);
+      // fullSizeArray.push(`https://tripadcoba.s3-us-west-1.amazonaws.com/full${imageNum}.jpg`);
+      fullSizeArray.push(image.imgFullUrl)
+      // thumbnailArray.push(`https://tripadcoba.s3-us-west-1.amazonaws.com/thumb${imageNum}.jpg`);
+      thumbnailArray.push(image.imgThumbUrl)
 
       image.uploadDate = new Date();
       image.user = faker.name.firstName() + faker.name.lastName();
