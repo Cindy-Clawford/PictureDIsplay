@@ -52,3 +52,9 @@ Possible issues (don't allow these to happen):
 This module is a complex beast but if you feed it what it wants, it should do your bidding.
 
 If you have any issues not associated with what has been listed on this page, please contact the developer: Susannah Marcus
+
+
+npm install
+npm run build
+npm run start
+npm run seeddb
