@@ -51,5 +51,5 @@ function mongoDelete(data) {
 
 module.exports.mongoGet = mongoGet;
 module.exports.mongoPost = mongoPost;
-module.exports.mongoPut = mongoPut;
+module.exports.mongoUpdate = mongoUpdate;
 module.exports.mongoDelete = mongoDelete;
