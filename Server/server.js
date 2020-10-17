@@ -8,14 +8,6 @@ app.use(express.static(__dirname + '/../public/'));
 app.use('/:hotelId',express.static(__dirname + '/../public/'));
 app.use(express.json());
 
-// app.get('/api/pictures/:hotel', (req, res) => {
-//   let data = req.params.hotel;
-//   console.log(data);
-//   Hotel.find({ name: data})
-//   .then((results) => {
-//     res.send(results);
-//   })
-// })
 
 app.get('/api/pictures/:hotel', (req, res) => {
   let data = {name : req.params.hotel};
@@ -26,11 +18,20 @@ app.get('/api/pictures/:hotel', (req, res) => {
 })
 
 app.post('/api/createItem', (req, res) => {
-  //TODO
+  let data = req.body;
+  let genericPost = mongoCRUD.mongoPost(data);
+  genericPost.then((result) => {
+    res.send(result)
+  })
 })
 
-app.patch('api/updateItem:hotel', (req, res) => {
-  //TODO
+app.patch('api/updateItem/:hotel', (req, res) => {
+  let data = req.body;
+  let filter = {name: req.params.hotel};
+  let genericUpdate = mongoCRUD.mongoUpdate(filter, data);
+  genericUpdate.then((result) => {
+    res.send(result)
+  })
 })
 
 app.delete('api/pictures/:hotel', (req, res) => {

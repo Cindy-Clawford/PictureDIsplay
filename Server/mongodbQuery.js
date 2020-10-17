@@ -13,9 +13,9 @@ function mongoGet(data) {
 }
 
 
-function mongoPost(newEntry) {
+function mongoPost(data) {
   return new Promise(function(resolve, reject) {
-  Hotel.create(newEntry)
+  Hotel.create(data)
     .exec((err, result) => {
       if (err) {
         reject(err);
@@ -25,9 +25,9 @@ function mongoPost(newEntry) {
   })
 }
 
-function mongoPut(filter, update) {
+function mongoUpdate(filter, data) {
   return new Promise(function(resolve, reject) {
-  Hotel.updateOne(filter, update)
+  Hotel.updateOne(filter, data)
     .exec((err, result) => {
       if (err) {
         reject(err);
