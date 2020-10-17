@@ -158,7 +158,7 @@ class PictureDisplayApp extends React.Component {
 
     let statement;
     if (comp === 'main') {
-      debugger;
+      // debugger;
       if (sentUrl === undefined) {
         let currentPhotoObjectIndex = this.state.currentMainPhotoIndex;
         let user = this.getUserName(currentPhotoObjectIndex);
@@ -277,11 +277,26 @@ class PictureDisplayApp extends React.Component {
   }
 
   setUpPhotoStates(data) {
+    let photo = data.photoObjects;
+    let fullsizes = [];
+    let mainPhotos = [];
+    let thumbnails = []
+    for(let i = 0; i < photo.length; i++) {
+      fullsizes.push(photo[i].imgFullUrl);
+      mainPhotos.push(photo[i].imgMainUrl);
+      thumbnails.push(photo[i].imgThumbUrl)
+    }
+    // this.setState({
+    //   photos: data.photoObjects,
+    //   windowFullSizePhotos: data.FullPhotos,
+    //   mainGalleryPhotos: data.MainPhotos,
+    //   miniGrid: data.ThumbnailPhotos.slice(0, 20)
+    // })
     this.setState({
-      photos: data.photoObjects,
-      windowFullSizePhotos: data.FullPhotos,
-      mainGalleryPhotos: data.MainPhotos,
-      miniGrid: data.ThumbnailPhotos.slice(0, 20)
+      photos: photo,
+      windowFullSizePhotos: fullsizes,
+      mainGalleryPhotos: mainPhotos,
+      miniGrid: thumbnails.slice(0, 20)
     })
   }
 
@@ -337,6 +352,7 @@ class PictureDisplayApp extends React.Component {
       method: 'GET'
     })
     .then((res) => {
+      console.log('data getting:', res.data)
       this.setHotelState(res.data[0]);
       this.setUpPhotoStates(res.data[0]);
       this.setUpUserState(res.data[0]);
