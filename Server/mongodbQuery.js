@@ -1,6 +1,6 @@
 const Hotel = require('../Database/Photo');
 
-function mongoGet(data) {
+function getMethod(data) {
   return new Promise(function(resolve, reject) {
     Hotel.find(data)
       .exec((err, result) => {
@@ -12,8 +12,7 @@ function mongoGet(data) {
     });
 }
 
-
-function mongoPost(data) {
+function postMethod(data) {
   return new Promise(function(resolve, reject) {
   Hotel.create(data)
     .exec((err, result) => {
@@ -25,7 +24,7 @@ function mongoPost(data) {
   })
 }
 
-function mongoUpdate(filter, data) {
+function updateMethod(filter, data) {
   return new Promise(function(resolve, reject) {
   Hotel.updateOne(filter, data)
     .exec((err, result) => {
@@ -37,7 +36,7 @@ function mongoUpdate(filter, data) {
   })
 }
 
-function mongoDelete(data) {
+function deleteMethod(data) {
   return new Promise(function(resolve, reject) {
   Hotel.deleteOne(data)
     .exec((err, result) => {
@@ -49,7 +48,7 @@ function mongoDelete(data) {
   })
 }
 
-module.exports.mongoGet = mongoGet;
-module.exports.mongoPost = mongoPost;
-module.exports.mongoUpdate = mongoUpdate;
-module.exports.mongoDelete = mongoDelete;
+module.exports.getMethod = getMethod;
+module.exports.postMethod = postMethod;
+module.exports.updateMethod = updateMethod;
+module.exports.deleteMethod = deleteMethod;
